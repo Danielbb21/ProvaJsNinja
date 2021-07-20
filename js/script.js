@@ -3,10 +3,9 @@
 
     var $gameBtn = new DOM('[data-js="btns"]');
     var $betName = new DOM('[data-js="betName"]');
-    var $beforeBetInfo = new DOM('[data-js="beforeBetInfo"]');
-    var $main = new DOM('main');
     var $betInformation = new DOM('[data-js="betInformation"]');
-    console.log('bet info', $betInformation.get()[0].value = 'teste');
+    var $gameNumbers = new DOM('[data-js="gameNumbers"]');
+
     $gameBtn.on('click', handlegameBtnClick);
 
 
@@ -22,7 +21,7 @@
     }
 
     function handleAjax(obj) {
-        console.log('entreiu aqui')
+
         var ajax = new XMLHttpRequest();
         ajax.open('GET', '../games.json');
         ajax.send();
@@ -39,17 +38,59 @@
     }
 
     function placeInformationIntoHtml(args) {
-
-        var decription = doc.createTextNode(args.description);
-
-
         $betInformation.get()[0].textContent = args.description;
 
+        var numeros = fillNumbersIntoHtml(args.range, args.range);
+
+        cleanDiv($gameNumbers.get()[0]);
+        numeros.sort(comparaNumeros).forEach(function(number) {
+            var span = doc.createElement('span');
+            var spText = doc.createTextNode(number);
+            span.appendChild(spText);
+            span.setAttribute('class', 'numbers');
+
+            span.className = 'numbers';
+            span.style.maxWidth = '63px';
+            span.style.maxWidth = '63px';
+            span.style.width = '63px';
+            span.style.height = '65px';
+            span.style.display = 'flex';
+            span.style.alignItems = 'center';
+            span.style.justifyContent = 'center';
+            span.style.marginLeft = '12px';
+            span.style.marginBottom = '20px';
+
+            span.style.textAlign = 'left';
+
+            span.style.borderRadius = '30px';
+            span.style.backgroundColor = args.color;
+            span.style.color = '#FFFFFF';
+            $gameNumbers.get()[0].appendChild(span);
+        })
     }
 
-    function insertAfter(element, newNode, existingNode) {
-        element.insertBefore(newNode, existingNode.nextSibling);
+    function cleanDiv(obj) {
+        var len = obj.children.length;
+        if (obj.hasChildNodes()) {
+
+            while (obj.firstChild) {
+                obj.removeChild(obj.lastChild);
+            }
+        }
     }
+
+    function comparaNumeros(a, b) { if (a == b) return 0; if (a < b) return -1; if (a > b) return 1; }
+
+    function fillNumbersIntoHtml(maxNumbers, range) {
+        var numeros = [];
+        while (numeros.length < maxNumbers) {
+            var aleatorio = Math.floor(Math.random() * range) + 1;
+            if (numeros.indexOf(aleatorio) == -1)
+                numeros.push(aleatorio);
+        }
+        return numeros;
+    }
+
 
     function choseElements(obj, array) {
         switch (obj) {

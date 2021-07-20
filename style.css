@@ -58,6 +58,25 @@ main>h1 {
     display: flex;
 }
 
+.gameNumbers {
+    max-width: 684px;
+    max-height: 326px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+span.numbers {
+    width: '63px';
+    height: '65px';
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+    margin-left: '12px';
+    margin-bottom: '20px';
+    text-align: 'left';
+    border-radius: '30px';
+}
+
 .addCart {
     width: 209px;
     height: 52px;
