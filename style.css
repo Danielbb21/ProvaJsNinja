@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+}
+
 .head {
     display: flex;
 }
@@ -126,4 +130,11 @@ span.numbers {
     border: 1px solid #27C383;
     margin-left: 25px;
     margin-right: 142px;
+}
+
+.cart {
+    width: 317px;
+    height: 484px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    word-wrap: break-word;
 }
