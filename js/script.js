@@ -5,36 +5,53 @@
     var $betName = new DOM('[data-js="betName"]');
     var $betInformation = new DOM('[data-js="betInformation"]');
     var $gameNumbers = new DOM('[data-js="gameNumbers"]');
-
-    console.log($gameNumbers.get()[0].children.length);
-
     var $complet = new DOM('[data-js="complet"]');
+    var $clear = new DOM('[data-js="clear"]');
+    var colorElement;
     var elementos = [];
     var chosingNumbers = [];
+
     $gameBtn.on('click', handlegameBtnClick);
     $complet.on('click', handleCompletNumbers);
+    $clear.on('click', handleClearSelectedNumbers);
 
     function handleCompletNumbers() {
+        handleClearSelectedNumbers();
         console.log(elementos.range, elementos.maxNumber);
         chosingNumbers = fillNumbersIntoHtml(elementos.maxNumber, elementos.range);
         console.log('elementos esoclhidos', chosingNumbers);
-        // var previusColor = $gameNumbers.get()[0].children[0].
+
         Array.prototype.forEach.call($gameNumbers.get()[0].children, function(element) {
             for (var i = 0; i < chosingNumbers.length; i++) {
                 if (chosingNumbers[i] === +element.textContent) {
-                    // console.log('cor anterior: ', element.style.backgroundColor);
                     element.style.backgroundColor = 'red';
                     console.log(chosingNumbers[i], element.textContent);
                 }
             }
         });
+    }
 
+    function handleClearSelectedNumbers() {
+        var numbersQuantty = chosingNumbers.length;
+        if (numbersQuantty > 0) {
+            for (var i = 0; i < numbersQuantty; i++) {
+                chosingNumbers.pop();
+            }
 
+            console.log(chosingNumbers);
+            cleanColorFields();
+        }
+    }
 
+    function cleanColorFields() {
+        Array.prototype.forEach.call($gameNumbers.get()[0].children, function(element) {
+            element.style.backgroundColor = colorElement;
+        });
     }
 
     function handlegameBtnClick() {
-
+        handleClearSelectedNumbers();
+        console.log('selected numbers', chosingNumbers)
         fillBetName.call(this);
         handleAjax(this.textContent);
     }
@@ -63,7 +80,7 @@
 
     function placeInformationIntoHtml(args) {
         $betInformation.get()[0].textContent = args.description;
-
+        colorElement = args.color;
         var numeros = fillNumbersIntoHtml(args.range, args.range);
 
         cleanDiv($gameNumbers.get()[0]);
