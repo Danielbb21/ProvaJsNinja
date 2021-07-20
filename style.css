@@ -12,6 +12,10 @@ footer>p {
     text-align: center;
 }
 
+main {
+    margin-left: 130px;
+}
+
 main>h1 {
     color: #707070;
     font-family: 24px;
@@ -60,7 +64,7 @@ main>h1 {
 
 .gameNumbers {
     max-width: 684px;
-    max-height: 326px;
+    /* max-height: 326px; */
     display: flex;
     flex-wrap: wrap;
 }
@@ -80,8 +84,8 @@ span.numbers {
 .addCart {
     width: 209px;
     height: 52px;
-    background: #27c383 0% 0% no-repeat padding-box;
-    border: 1px solid #27c383;
+    background: #27C383 0% 0% no-repeat padding-box;
+    border: 1px solid #27C383;
     border-radius: 10px;
     opacity: 1;
     display: flex;
@@ -102,4 +106,24 @@ span.numbers {
     color: #FFFFFF;
     letter-spacing: 0px;
     opacity: 1;
+}
+
+.complet {
+    width: 164px;
+    height: 52px;
+    border-radius: 10px;
+    color: #27C383;
+    font-size: 16px;
+    border: 1px solid #27C383;
+}
+
+.clear {
+    width: 135px;
+    height: 52px;
+    border-radius: 10px;
+    color: #27C383;
+    font-size: 16px;
+    border: 1px solid #27C383;
+    margin-left: 25px;
+    margin-right: 142px;
 }

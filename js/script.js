@@ -6,8 +6,32 @@
     var $betInformation = new DOM('[data-js="betInformation"]');
     var $gameNumbers = new DOM('[data-js="gameNumbers"]');
 
-    $gameBtn.on('click', handlegameBtnClick);
+    console.log($gameNumbers.get()[0].children.length);
 
+    var $complet = new DOM('[data-js="complet"]');
+    var elementos = [];
+    var chosingNumbers = [];
+    $gameBtn.on('click', handlegameBtnClick);
+    $complet.on('click', handleCompletNumbers);
+
+    function handleCompletNumbers() {
+        console.log(elementos.range, elementos.maxNumber);
+        chosingNumbers = fillNumbersIntoHtml(elementos.maxNumber, elementos.range);
+        console.log('elementos esoclhidos', chosingNumbers);
+        // var previusColor = $gameNumbers.get()[0].children[0].
+        Array.prototype.forEach.call($gameNumbers.get()[0].children, function(element) {
+            for (var i = 0; i < chosingNumbers.length; i++) {
+                if (chosingNumbers[i] === +element.textContent) {
+                    // console.log('cor anterior: ', element.style.backgroundColor);
+                    element.style.backgroundColor = 'red';
+                    console.log(chosingNumbers[i], element.textContent);
+                }
+            }
+        });
+
+
+
+    }
 
     function handlegameBtnClick() {
 
@@ -30,9 +54,9 @@
             if (isRequestOk(this)) {
                 var dataParsed = JSON.parse(ajax.responseText);
                 var array = dataParsed.types;
-                var element = choseElements(obj, array);
-                console.log('elemento retornado', element);
-                placeInformationIntoHtml(element);
+                elementos = choseElements(obj, array);
+
+                placeInformationIntoHtml(elementos);
             }
         }
     }
@@ -70,7 +94,7 @@
     }
 
     function cleanDiv(obj) {
-        var len = obj.children.length;
+
         if (obj.hasChildNodes()) {
 
             while (obj.firstChild) {
@@ -83,6 +107,7 @@
 
     function fillNumbersIntoHtml(maxNumbers, range) {
         var numeros = [];
+
         while (numeros.length < maxNumbers) {
             var aleatorio = Math.floor(Math.random() * range) + 1;
             if (numeros.indexOf(aleatorio) == -1)
