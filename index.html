@@ -20,20 +20,22 @@
     </header>
     <main>
         <section class="main-header">
-            <h1>NEW BET FOR<span data-js="betName"></span></h1>
+            <h1>NEW BET<span data-js="betName"></span></h1>
             <h1>CART</h1>
+            <p>Chose a game</p>
         </section>
         <section class="buttons">
-            <button class="lotofacil">Lotofacil</button>
-            <button class="mega">Mega-Sena</button>
-            <button class="lotomania">Lotomania</button>
+            <button class="lotofacil" data-js="btns">Lotofácil</button>
+            <button class="mega" data-js="btns">Mega-Sena</button>
+            <button class="lotomania" data-js="btns">Lotomania</button>
         </section>
-
+        <p data-js="beforeBetInfo">Fill your bet</p>
+        <span data-js="betInformation"></span>
         <div class="ActionButtons">
-            <button class="complet">Complete Game</button>
-            <button class="clear">Clear Game</button>
-            <button class="addCart">
-                <img src="images/icons8-shopping-cart-24.png"/>
+            <button class="complet" data-js="complet">Complete Game</button>
+            <button class="clear" data-js="clear">Clear Game</button>
+            <button class="addCart" data-js="addCart">
+                <img src="images/icons8-shopping-cart-24.png" />
                 <span>Add to Cart</span>
             </button>
         </div>
@@ -41,7 +43,8 @@
     <footer>
         <p>Copyrigth 2020 Luby Software</p>
     </footer>
-
+    <script src="js/dom.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

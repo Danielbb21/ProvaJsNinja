@@ -1,77 +1,84 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .head {
-  display: flex;
-}
-
-footer > p {
-  text-align: center;
-}
-
-main > h1 {
-  color: #707070;
-  font-family: 24px;
-}
-
-.buttons > button {
-  width: 113px;
-  height: 34px;
-  border: 2px solid;
-  opacity: 1;
-  border-radius: 100px;
-  font-size: 14px;
-  margin-right: 25px;
-}
-
-.buttons > .lotofacil {
-  border-color: #7f3992;
-  text-align: center;
-  letter-spacing: 0px;
-  color: #7f3992;
-}
-
-.buttons > .mega {
-  border-color: #01ac66;
-  background: #01ac66 0% 0% no-repeat padding-box;
-  text-align: center;
-  letter-spacing: 0px;
-  color: #ffffff;
-}
-
-.buttons > .lotomania {
-  border-color: #f79c31;
-  text-align: center;
-  letter-spacing: 0px;
-  color: #f79c31;
-}
-.ActionButtons{
     display: flex;
 }
-.addCart {
-  width: 209px;
-  height: 52px;
-  background: #27c383 0% 0% no-repeat padding-box;
-  border: 1px solid #27c383;
-  border-radius: 10px;
-  opacity: 1;
-  display: flex;
-  align-items: center;
+
+footer>p {
+    text-align: center;
 }
 
+main>h1 {
+    color: #707070;
+    font-family: 24px;
+}
 
-.addCart >img{
+.main-header>p {
+    font-size: 17px;
+    color: #868686;
+}
+
+.buttons>button {
+    width: 113px;
+    height: 34px;
+    border: 2px solid;
+    opacity: 1;
+    border-radius: 100px;
+    font-size: 14px;
+    margin-right: 25px;
+}
+
+.buttons>.lotofacil {
+    border-color: #7f3992;
+    text-align: center;
+    letter-spacing: 0px;
+    color: #7f3992;
+}
+
+.buttons>.mega {
+    border-color: #01ac66;
+    background: #01ac66 0% 0% no-repeat padding-box;
+    text-align: center;
+    letter-spacing: 0px;
+    color: #ffffff;
+}
+
+.buttons>.lotomania {
+    border-color: #f79c31;
+    text-align: center;
+    letter-spacing: 0px;
+    color: #f79c31;
+}
+
+.ActionButtons {
+    display: flex;
+}
+
+.addCart {
+    width: 209px;
+    height: 52px;
+    background: #27c383 0% 0% no-repeat padding-box;
+    border: 1px solid #27c383;
+    border-radius: 10px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+}
+
+.addCart>img {
     width: 27px;
     height: 25px;
-  margin-left: 25.57px;
+    margin-left: 25.57px;
     margin-right: 28.86px;
     /* margin-top: 13px; */
 }
-.addCart > span{
-    font-size: 16px;  
+
+.addCart>span {
+    font-size: 16px;
     text-align: left;
     color: #FFFFFF;
     letter-spacing: 0px;
