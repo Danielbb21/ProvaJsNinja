@@ -11,6 +11,7 @@
     var $cart = new DOM('[data-js="cart"]');
     var $totalPrice = new DOM('[data-js="totalPrice"]');
     var $priceElement = new DOM('[data-js="priceElement"]');
+    var $cartContent = doc.createElement('div');
 
     var colorElement;
     var elementos = [];
@@ -28,62 +29,131 @@
     }
 
     function handleAddCart() {
-        console.log(elementos);
-        console.log(chosingNumbers.sort(comparaNumeros).toString());
-        cart.push({
-            numbers: chosingNumbers.sort(comparaNumeros).toString(),
-            type: elementos.type,
-            color: elementos.color,
-            price: elementos.price
-        });
-        console.log(cart);
-        addElementsIntoCartSection(cart[cart.length - 1]);
-        handleClearSelectedNumbers();
-    }
-
-    function verfifyChosenNumbers() {
-        return chosingNumbers.length > 0 ? true : false;
-    }
-    function addElementsIntoCartSection(cartElement) {
         try {
             if (!verfifyChosenNumbers()) {
-                throw new Error('Nenhum número escolhido');
+                throw new Error('Números não escolhidos');
             }
-            totalPrice += cartElement.price;
-            console.log('price', cartElement.price.toString());
-            var div = doc.createElement('div');
-            var $p = doc.createElement('p');
-            var $type = doc.createElement('span');
-            var textType = doc.createTextNode(cartElement.type);
-            var pText = doc.createTextNode(cartElement.numbers);
-            var $price = doc.createElement('span');
 
-            var textPrice = ' R$ ' + cartElement.price.toString();
 
-            $p.appendChild(pText);
-            $type.appendChild(textType);
+            console.log(elementos);
+            console.log(chosingNumbers.sort(comparaNumeros).toString());
+            cart.push({
 
-            $price.textContent = textPrice;
-
-            div.appendChild($p);
-            div.appendChild($type);
-            div.appendChild($price);
-
-            div.style.maxWidth = '234px';
-            div.style.maxHeight = '86px';
-            div.style.paddingLeft = '12px';
-            div.style.marginTop = '40px';
-
-            $p.style.fontSize = '15px';
-            $type.style.color = cartElement.color;
-            div.style.borderLeft = `4px solid ${cartElement.color}`;
-            $cart.get()[0].insertBefore(div, $priceElement.get()[0]);
-            var formaredPrice = formatPriceToDisplay(totalPrice);
-            $totalPrice.get()[0].textContent = formaredPrice;
+                numbers: chosingNumbers.sort(comparaNumeros).toString(),
+                type: elementos.type,
+                color: elementos.color,
+                price: elementos.price
+            });
+            console.log('CART', cart);
+            addElementsIntoCartSection(cart[cart.length - 1]);
+            handleClearSelectedNumbers();
         }
         catch (err) {
             alert(err.message);
         }
+
+    }
+
+    function verfifyChosenNumbers() {
+        console.log('chosing numbers length', chosingNumbers.length);
+        return chosingNumbers.length > 0 ? true : false;
+    }
+    function addElementsIntoCartSection(cartElement) {
+
+        totalPrice += cartElement.price;
+        console.log('price', cartElement.price.toString());
+        var a = doc.createElement('a');
+        var principalDiv = doc.createElement('div');
+        var div = doc.createElement('div');
+        var $p = doc.createElement('p');
+        var $type = doc.createElement('span');
+        var textType = doc.createTextNode(cartElement.type);
+        var pText = doc.createTextNode(cartElement.numbers);
+        var $price = doc.createElement('span');
+        var img = doc.createElement('img');
+
+        img.src = '../images/caixote-de-lixo.png';
+        img.setAttribute('class', 'trashElement');
+        a.appendChild(img);
+        var textPrice = ' R$ ' + cartElement.price.toString();
+
+        $p.appendChild(pText);
+        $type.appendChild(textType);
+
+        $price.textContent = textPrice;
+
+        principalDiv.appendChild(a);
+
+        div.appendChild($p);
+        div.appendChild($type);
+        div.appendChild($price);
+        div.setAttribute('class', 'cartElements');
+        principalDiv.setAttribute('class', 'divCart');
+        $p.setAttribute('class', 'cartNumbers');
+
+        $type.style.color = cartElement.color;
+
+        div.style.borderLeft = `4px solid ${cartElement.color}`;
+
+        principalDiv.appendChild(div);
+        $cartContent.appendChild(principalDiv);
+        $cart.get()[0].insertBefore($cartContent, $priceElement.get()[0]);
+        var formaredPrice = formatPriceToDisplay(totalPrice);
+
+        $totalPrice.get()[0].textContent = formaredPrice;
+
+        a.addEventListener('click', handleDeleteButton);
+
+    }
+
+    function handleDeleteButton() {
+        var numbers = this.nextElementSibling.children[0].textContent.split(',');
+
+        var arrayNumber = convertToArrayOfNumbers(numbers);
+
+        console.log('Array converted', arrayNumber);
+        searachIntoCartNumbers(cart, numbers);
+    }
+
+    function searachIntoCartNumbers(cart, number) {
+        console.log('number', number.toString());
+        console.log(cart);
+        var counter = 0;
+        var t = [];
+        var cartNumbers = cart.map(function (element) {
+
+            return element.numbers;
+        })
+
+        console.log('cartNumber', cartNumbers);
+        var position = cartNumbers.indexOf(number.toString());
+        var element = cart.splice(position, 1);
+        console.log('elemento removido', element[0].numbers);
+        console.log('pós remoção', cart);
+        cleanCart(element[0]);
+
+    }
+
+    function cleanCart(obj) {
+
+        Array.prototype.map.call($cartContent.children, function (t) {
+            if (t.children[1].children[0].textContent === obj.numbers) {
+                $cartContent.removeChild(t);
+                return;
+            }
+        });
+        totalPrice -= obj.price;
+        var formaredPrice = formatPriceToDisplay(totalPrice);
+
+        $totalPrice.get()[0].textContent = formaredPrice;
+
+    }
+    function convertToArrayOfNumbers(arr) {
+        var arrayNumber = arr.map(function (number) {
+            return Number(number);
+        });
+
+        return arrayNumber;
     }
 
     function formatPriceToDisplay(price) {
@@ -126,7 +196,7 @@
                 chosingNumbers.pop();
             }
 
-            console.log(chosingNumbers);
+            console.log('aqui', chosingNumbers);
             cleanColorFields();
         }
 

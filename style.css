@@ -134,7 +134,38 @@ span.numbers {
 
 .cart {
     width: 317px;
-    height: 484px;
+    min-height: 484px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     word-wrap: break-word;
+}
+
+.cartNumbers{
+
+    font-size: 15px;
+    word-break: break-word;
+}
+
+.divCart{
+    
+    width: 234px;
+    height: 86px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.trashElement{
+    width: 20px;
+    height: 24px;
+    margin-right: 14px;
+    margin-left:17px;
+}
+
+.cartElements{
+    padding-left: 12px;
+    width: 234px;
+    line-height: 25px;
+    border-radius: 5px;
+    line-height: 25px;
+    border-radius: 5px;
 }
