@@ -101,7 +101,7 @@ span.numbers {
     height: 25px;
     margin-left: 25.57px;
     margin-right: 28.86px;
-    /* margin-top: 13px; */
+    
 }
 
 .addCart>span {
@@ -134,9 +134,11 @@ span.numbers {
 
 .cart {
     width: 317px;
-    min-height: 484px;
+    /* min-height: 300px; */
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
+    /* position: relative; */
+    /* overflow: scroll; */
 }
 
 .cartNumbers{
@@ -171,7 +173,12 @@ span.numbers {
 }
 
 .saveCart{
-    margin-top: 388px;
+    
+    /* position: -webkit-sticky; */
+    position: sticky;
+    /* top: 20px; */
+    bottom: 0;
+    /* right: */
     width: 317px;
     height: 96px;
     border: 1px solid #E2E2E2;
@@ -188,4 +195,20 @@ span.numbers {
     margin-left: 14px;
     width: 24px;
     height: 35px;
+}
+
+.TitleCart{
+    margin-left: 19px;
+    font-size: 24px;
+    /* color: red; */
+    padding-top: 32px;
+    
+}
+
+.ValueCart{
+    margin-left: 19px;
+    font-size: 24px;
+    /* color: red; */
+    margin-top: 40px;
+    margin-bottom: 47px;
 }
