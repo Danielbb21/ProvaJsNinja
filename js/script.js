@@ -12,6 +12,7 @@
     var $totalPrice = new DOM('[data-js="totalPrice"]');
     var $priceElement = new DOM('[data-js="priceElement"]');
     var $cartContent = doc.createElement('div');
+    var $saveCart = new DOM('[data-js="saveCart"]');
 
     var colorElement;
     var elementos = [];
@@ -23,9 +24,45 @@
     $complet.on('click', handleCompletNumbers);
     $clear.on('click', handleClearSelectedNumbers);
     $addCart.on('click', handleAddCart);
+    $saveCart.on('click', handleSaveCart);
 
     function verifyDivContent() {
         return $gameNumbers.get()[0].children.length > 0 ? true : false;
+    }
+
+    function handleSaveCart() {
+        try {
+            verifyTotalPrice();
+        }
+        catch (err) {
+            alert(err.message);
+        }
+    }
+
+    function verifyTotalPrice() {
+
+        console.log('filhos', $cartContent.children[0]);
+        if (cart.length <= 0) {
+            throw new Error('Você ainda não tem nenhum jogo no carrinho');
+        }
+        console.log(elementos);
+        if (totalPrice < elementos.minCartValue) {
+            throw new Error(`Você ainda não possui o valor mínimo pedido que é ${elementos.minCartValue}`)
+        }
+        alert('Parabéns, desejamos muita sorte para vocês');
+        cleanCart();
+    }
+
+    function cleanCart() {
+        while ($cartContent.firstChild) {
+            $cartContent.removeChild($cartContent.lastChild);
+            cart.pop();
+            
+        }
+        totalPrice = 0;
+        var formaredPrice = formatPriceToDisplay(totalPrice);
+
+        $totalPrice.get()[0].textContent = formaredPrice;
     }
 
     function handleAddCart() {
@@ -118,7 +155,7 @@
     function searachIntoCartNumbers(cart, number) {
         console.log('number', number.toString());
         console.log(cart);
-        var counter = 0;
+
         var t = [];
         var cartNumbers = cart.map(function (element) {
 
@@ -130,11 +167,11 @@
         var element = cart.splice(position, 1);
         console.log('elemento removido', element[0].numbers);
         console.log('pós remoção', cart);
-        cleanCart(element[0]);
+        removeElementInsideTheCart(element[0]);
 
     }
 
-    function cleanCart(obj) {
+    function removeElementInsideTheCart(obj) {
 
         Array.prototype.map.call($cartContent.children, function (t) {
             if (t.children[1].children[0].textContent === obj.numbers) {
@@ -148,6 +185,7 @@
         $totalPrice.get()[0].textContent = formaredPrice;
 
     }
+
     function convertToArrayOfNumbers(arr) {
         var arrayNumber = arr.map(function (number) {
             return Number(number);

@@ -6,7 +6,7 @@
             "price": 2.5,
             "maxNumber": 15,
             "color": "#7F3992",
-            "min-cart-value": 30
+            "minCartValue": 30
         },
         {
             "type": "Mega-Sena",
@@ -15,7 +15,7 @@
             "price": 4.5,
             "maxNumber": 6,
             "color": "#01AC66",
-            "min-cart-value": 30
+            "minCartValue": 30
         },
         {
             "type": "Quina",
@@ -24,7 +24,7 @@
             "price": 2,
             "maxNumber": 5,
             "color": "#F79C31",
-            "min-cart-value": 30
+            "minCartValue": 30
         }
     ]
 }

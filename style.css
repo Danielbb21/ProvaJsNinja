@@ -169,3 +169,23 @@ span.numbers {
     line-height: 25px;
     border-radius: 5px;
 }
+
+.saveCart{
+    margin-top: 388px;
+    width: 317px;
+    height: 96px;
+    border: 1px solid #E2E2E2;
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    color: #27C383;
+    
+}
+
+.saveCart > img{
+    margin-left: 14px;
+    width: 24px;
+    height: 35px;
+}
