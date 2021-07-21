@@ -1,4 +1,4 @@
-(function(DOM, doc) {
+(function (DOM, doc) {
     "use strict";
 
     var $gameBtn = new DOM('[data-js="btns"]');
@@ -41,41 +41,49 @@
         handleClearSelectedNumbers();
     }
 
-    //Criar fragmentHtml
+    function verfifyChosenNumbers() {
+        return chosingNumbers.length > 0 ? true : false;
+    }
     function addElementsIntoCartSection(cartElement) {
-        totalPrice += cartElement.price;
-        console.log('price', cartElement.price.toString());
-        var div = doc.createElement('div');
-        var $p = doc.createElement('p');
-        var $type = doc.createElement('span');
-        var textType = doc.createTextNode(cartElement.type);
-        var pText = doc.createTextNode(cartElement.numbers);
-        var $price = doc.createElement('span');
+        try {
+            if (!verfifyChosenNumbers()) {
+                throw new Error('Nenhum número escolhido');
+            }
+            totalPrice += cartElement.price;
+            console.log('price', cartElement.price.toString());
+            var div = doc.createElement('div');
+            var $p = doc.createElement('p');
+            var $type = doc.createElement('span');
+            var textType = doc.createTextNode(cartElement.type);
+            var pText = doc.createTextNode(cartElement.numbers);
+            var $price = doc.createElement('span');
 
-        var textPrice = ' R$ ' + cartElement.price.toString();
+            var textPrice = ' R$ ' + cartElement.price.toString();
 
-        $p.appendChild(pText);
-        $type.appendChild(textType);
+            $p.appendChild(pText);
+            $type.appendChild(textType);
 
-        $price.textContent = textPrice;
+            $price.textContent = textPrice;
 
-        div.appendChild($p);
-        div.appendChild($type);
-        div.appendChild($price);
+            div.appendChild($p);
+            div.appendChild($type);
+            div.appendChild($price);
 
-        div.style.maxWidth = '234px';
-        div.style.maxHeight = '86px';
-        div.style.paddingLeft = '12px';
-        div.style.marginTop = '40px';
+            div.style.maxWidth = '234px';
+            div.style.maxHeight = '86px';
+            div.style.paddingLeft = '12px';
+            div.style.marginTop = '40px';
 
-        $p.style.fontSize = '15px';
-        $type.style.color = cartElement.color;
-        div.style.borderLeft = `4px solid ${cartElement.color}`;
-        $cart.get()[0].insertBefore(div, $priceElement.get()[0]);
-        // $cart.get()[0].appendChild(div);
-        // console.log('totalPrice', totalPrice.toString().replace('.', ','));
-        var formaredPrice = formatPriceToDisplay(totalPrice);
-        $totalPrice.get()[0].textContent = formaredPrice;
+            $p.style.fontSize = '15px';
+            $type.style.color = cartElement.color;
+            div.style.borderLeft = `4px solid ${cartElement.color}`;
+            $cart.get()[0].insertBefore(div, $priceElement.get()[0]);
+            var formaredPrice = formatPriceToDisplay(totalPrice);
+            $totalPrice.get()[0].textContent = formaredPrice;
+        }
+        catch (err) {
+            alert(err.message);
+        }
     }
 
     function formatPriceToDisplay(price) {
@@ -94,7 +102,7 @@
             chosingNumbers = fillNumbersIntoHtml(elementos.maxNumber, elementos.range);
             console.log('elementos esoclhidos', chosingNumbers);
 
-            Array.prototype.forEach.call($gameNumbers.get()[0].children, function(element) {
+            Array.prototype.forEach.call($gameNumbers.get()[0].children, function (element) {
                 for (var i = 0; i < chosingNumbers.length; i++) {
                     if (chosingNumbers[i] === +element.textContent) {
                         element.style.backgroundColor = 'red';
@@ -126,7 +134,7 @@
     }
 
     function cleanColorFields() {
-        Array.prototype.forEach.call($gameNumbers.get()[0].children, function(element) {
+        Array.prototype.forEach.call($gameNumbers.get()[0].children, function (element) {
             element.style.backgroundColor = colorElement;
         });
     }
@@ -148,7 +156,7 @@
         var ajax = new XMLHttpRequest();
         ajax.open('GET', '../games.json');
         ajax.send();
-        ajax.onreadystatechange = function() {
+        ajax.onreadystatechange = function () {
 
             if (isRequestOk(this)) {
                 var dataParsed = JSON.parse(ajax.responseText);
@@ -166,7 +174,7 @@
         var numeros = fillNumbersIntoHtml(args.range, args.range);
 
         cleanDiv($gameNumbers.get()[0]);
-        numeros.sort(comparaNumeros).forEach(function(number) {
+        numeros.sort(comparaNumeros).forEach(function (number) {
             var span = doc.createElement('span');
             var spText = doc.createTextNode(number);
             span.appendChild(spText);
