@@ -200,7 +200,7 @@ span.numbers {
 .TitleCart{
     margin-left: 19px;
     font-size: 24px;
-    /* color: red; */
+    
     padding-top: 32px;
     
 }
@@ -208,7 +208,7 @@ span.numbers {
 .ValueCart{
     margin-left: 19px;
     font-size: 24px;
-    /* color: red; */
+    
     margin-top: 40px;
     margin-bottom: 47px;
 }

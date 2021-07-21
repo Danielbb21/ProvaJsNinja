@@ -112,7 +112,7 @@
         img.src = '../images/caixote-de-lixo.png';
         img.setAttribute('class', 'trashElement');
         a.appendChild(img);
-        var textPrice = ' R$ ' + cartElement.price.toString();
+        var textPrice = ' R$ ' + formatPriceToDisplay(cartElement.price);
 
         $p.appendChild(pText);
         $type.appendChild(textType);
