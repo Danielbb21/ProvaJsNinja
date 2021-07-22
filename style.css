@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,26 +6,29 @@
 
 body {
     background: #F7F7F7 0% 0% no-repeat padding-box;
+    /* margin-top: 200px; */
 }
 
-.head {
-    display: flex;
-}
-
-footer>p {
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+footer > p {
     text-align: center;
+    /* padding-bottom: 28px; */
 }
 
 main {
     margin-left: 130px;
 }
 
-main>h1 {
+main > h1 {
     color: #707070;
     font-family: 24px;
 }
 
 .main-header>p {
+    
     font-size: 17px;
     color: #868686;
 }
@@ -64,6 +67,9 @@ main>h1 {
 
 .ActionButtons {
     display: flex;
+    
+    margin-top: 61px;
+    
 }
 
 .gameNumbers {
@@ -71,6 +77,7 @@ main>h1 {
     /* max-height: 326px; */
     display: flex;
     flex-wrap: wrap;
+    /* overflow: scroll; */
 }
 
 span.numbers {
@@ -134,11 +141,16 @@ span.numbers {
 
 .cart {
     width: 317px;
+    max-height: 484px;
     /* min-height: 300px; */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     /* word-wrap: break-word; */
     /* position: relative; */
-    /* overflow: scroll; */
+    /* position: relative; */
+    /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    border: 1px solid #E2E2E2;
+    border-radius: 10px;
+    overflow: scroll;
 }
 
 .cartNumbers{
@@ -175,11 +187,11 @@ span.numbers {
 .saveCart{
     
     /* position: -webkit-sticky; */
-    position: sticky;
+    /* position: sticky; */
     /* top: 20px; */
-    bottom: 0;
+    /* bottom: 0; */
     /* right: */
-    width: 317px;
+    width: 300px;
     height: 96px;
     border: 1px solid #E2E2E2;
     background: #F4F4F4 0% 0% no-repeat padding-box;
@@ -198,9 +210,11 @@ span.numbers {
 }
 
 .TitleCart{
+    /* position: -webkit-sticky; */
+  /* position: sticky; */
     margin-left: 19px;
     font-size: 24px;
-    
+    /* top: 48; */
     padding-top: 32px;
     
 }
@@ -212,3 +226,105 @@ span.numbers {
     margin-top: 40px;
     margin-bottom: 47px;
 }
+.container{
+    min-height: 100%;
+    margin: 0 auto -50px;
+    
+}
+
+ footer{
+    /* position: fixed;
+    left: 0;
+    bottom:0;
+    width: 100%;
+    
+    color: black;*/
+    /* text-align: center;
+  
+    padding-bottom: 28px;  */
+    /* height: 10px; */
+    border-top: 2px solid #EBEBEB;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    height: 70px;
+} 
+
+.main1{
+    margin-bottom: 128px;
+}
+.head{
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    
+    
+}
+
+.head > h1{
+    margin-left: 141px;
+    margin-right: 74px;
+}
+
+.head-right {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: flex-start;
+}
+/* .head-right > h3{
+    margin-right: 40px;
+    margin-left: 230px;
+} */
+.head-right > h2{
+    /* margin-left: 587px; */
+    margin-left: 166px;
+    margin-right: 40px;
+}
+
+/* Grid */
+.grid {
+    
+    
+	display: grid;
+}
+
+.logo {
+	grid-area: logo;
+}
+
+.nav {
+	grid-area: nav;
+}
+
+.content {
+    margin-top: 72px;
+    margin-left: 130px;
+	grid-area: content;
+}
+
+.sidenav {
+	grid-area: sidenav;
+}
+
+.advert {
+    margin-top: 72px;
+    margin-left: 74px;
+	grid-area: advert;
+}
+
+.footer {
+	grid-area: footer;
+}
+
+
+
+.grid-template-areas-4 {
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 50px 80% 10px;
+	grid-template-areas:
+		"logo nav"
+		"content advert"
+		"footer footer"
+		;
+}
+

@@ -6,53 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Make your Bet</title>
+    <title>Document</title>
 </head>
 
 <body>
-    <header>
-        <section class="head">
-            <h1>TGL</h1>
-            <h3>Home</h3>
-            <h3>Account</h3>
-            <h3>Logout</h3>
-        </section>
-    </header>
-    <main>
-        <section class="main-header">
-            <h1>NEW BET<span data-js="betName"></span></h1>
+    <div class="container">
+        
+        <section class="grid grid-template-areas-4">
+            <div class="item logo">
+                <header>
+                    <div class="head">
+                        <h1 class="title">TGL</h1>
+                        <h3>Home</h3>
 
-            <p>Chose a game</p>
-        </section>
-        <section class="cart" data-js="cart"> 
-            <h1 class="TitleCart">CART</h1>
-            <h3 class="ValueCart" data-js="priceElement" ><span>CART</span> TOTAL: R$ <span data-js="totalPrice">0,00</span></h3>
-            <button class="saveCart" data-js="saveCart">Save <img src="images/icons8-seta-longa-à-direita-60.png"></button>
-        </section>
-        <section class="buttons">
-            <button class="lotofacil" data-js="btns">Lotofácil</button>
-            <button class="mega" data-js="btns">Mega-Sena</button>
-            <button class="lotomania" data-js="btns">Lotomania</button>
-        </section>
+                    </div>
+                </header>
+            </div>
+            <div class="item nav">
+                <div class="head-right">
+                <h2>Account</h2>
+                <h3>Logout</h3>
+            </div>
+            </div>
+            <div class="item content">
+                <section class="main-header">
+                    <h1>NEW BET<span data-js="betName"></span></h1>
 
-        <p data-js="beforeBetInfo">Fill your bet</p>
-        <span data-js="betInformation"></span>
+                    <p>Chose a game</p>
+                </section>
 
-        <div class="gameNumbers" data-js="gameNumbers"></div>
-        <div class="ActionButtons">
-            <button class="complet" data-js="complet">Complete Game</button>
-            <button class="clear" data-js="clear">Clear Game</button>
-            <button class="addCart" data-js="addCart">
-                <img src="images/icons8-shopping-cart-24.png" />
-                <span>Add to Cart</span>
-            </button>
+                <div class="main1">
+                    <section class="buttons">
+                        <button class="lotofacil" data-js="btns">Lotofácil</button>
+                        <button class="mega" data-js="btns">Mega-Sena</button>
+                        <button class="lotomania" data-js="btns">Lotomania</button>
+                    </section>
+
+                    <p data-js="beforeBetInfo">Fill your bet</p>
+                    <span data-js="betInformation"></span>
+
+                    <div class="gameNumbers" data-js="gameNumbers"></div>
+                    <div class="ActionButtons">
+                        <button class="complet" data-js="complet">Complete Game</button>
+                        <button class="clear" data-js="clear">Clear Game</button>
+                        <button class="addCart" data-js="addCart">
+                            <img src="images/icons8-shopping-cart-24.png" />
+                            <span>Add to Cart</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="item sidenav">sidenav</div> -->
+            <div class="item advert">
+                <div class="main2">
+                    <section class="cart" data-js="cart">
+                        <h1 class="TitleCart">CART</h1>
+                        <h3 class="ValueCart" data-js="priceElement"><span>CART</span> TOTAL: R$ <span
+                                data-js="totalPrice">0,00</span></h3>
+                        <button class="saveCart" data-js="saveCart">Save <img
+                                src="images/icons8-seta-longa-à-direita-60.png"></button>
+                    </section>
+                </div>
+            </div>
         </div>
-    </main>
-    <footer>
-        <p>Copyrigth 2020 Luby Software</p>
-    </footer>
+            <div class="item footer">
+                <footer>
+                    <p>Copyright 2020 Luby Software</p>
+                </footer>
+            </div>
+        </section>
+    
     <script src="js/dom.js"></script>
     <script src="js/script.js"></script>
+
 </body>
 
 </html>

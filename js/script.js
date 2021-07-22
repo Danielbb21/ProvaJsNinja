@@ -282,6 +282,7 @@
         var numeros = fillNumbersIntoHtml(args.range, args.range);
 
         cleanDiv($gameNumbers.get()[0]);
+       
         numeros.sort(comparaNumeros).forEach(function (number) {
             var span = doc.createElement('span');
             var spText = doc.createTextNode(number);
@@ -289,15 +290,14 @@
             span.setAttribute('class', 'numbers');
 
             span.className = 'numbers';
-            span.style.maxWidth = '63px';
-            span.style.maxWidth = '63px';
-            span.style.width = '63px';
-            span.style.height = '65px';
+       
+            span.style.width = `63px`;
+            span.style.height =`63px`;
             span.style.display = 'flex';
             span.style.alignItems = 'center';
             span.style.justifyContent = 'center';
             span.style.marginLeft = '12px';
-            span.style.marginBottom = '20px';
+            span.style.marginTop = '20px';
 
             span.style.textAlign = 'left';
 
@@ -305,7 +305,9 @@
             span.style.backgroundColor = args.color;
             span.style.color = '#FFFFFF';
             $gameNumbers.get()[0].appendChild(span);
+            
         })
+        
     }
 
     function cleanDiv(obj) {
