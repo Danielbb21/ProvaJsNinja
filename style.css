@@ -15,7 +15,11 @@ html, body {
   }
 footer > p {
     text-align: center;
-    /* padding-bottom: 28px; */
+    color: #707070;
+    font-size: 17px;
+    font-family:  Helvetica, sans-serif;
+    font-weight: normal;
+    
 }
 
 main {
@@ -26,14 +30,30 @@ main > h1 {
     color: #707070;
     font-family: 24px;
 }
-
+.main-header > h1{
+    font-family:  Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+    color: #707070;
+    margin-bottom: 33px;
+}
+.main-header > h1 >span{
+    font-weight: lighter;
+}
 .main-header>p {
-    
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
     font-size: 17px;
     color: #868686;
+    margin-bottom: 20px;
 }
 
 .buttons>button {
+    font-family:  Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
     width: 113px;
     height: 34px;
     border: 2px solid;
@@ -41,6 +61,7 @@ main > h1 {
     border-radius: 100px;
     font-size: 14px;
     margin-right: 25px;
+    margin-bottom: 36px;
 }
 
 .buttons>.lotofacil {
@@ -64,20 +85,37 @@ main > h1 {
     letter-spacing: 0px;
     color: #f79c31;
 }
-
+.bet > p{
+    color: #868686;
+    font-size: 17px;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+.bet > span{
+    color: #868686;
+    font-size: 17px;
+    font-family:  Helvetica, sans-serif;
+    
+    font-style: italic;
+}
 .ActionButtons {
     display: flex;
     
-    margin-top: 61px;
+    font-size: 16px;
+    font-family:  Helvetica, sans-serif;
+    font-weight: normal;
+    
+    margin-top: 50px;
     
 }
 
 .gameNumbers {
-    max-width: 684px;
-    /* max-height: 326px; */
+    width: 684px;
+    
     display: flex;
     flex-wrap: wrap;
-    /* overflow: scroll; */
+    
 }
 
 span.numbers {
@@ -101,6 +139,7 @@ span.numbers {
     opacity: 1;
     display: flex;
     align-items: center;
+    font-weight: bold;
 }
 
 .addCart>img {
@@ -140,21 +179,21 @@ span.numbers {
 }
 
 .cart {
-    width: 317px;
-    max-height: 484px;
-    /* min-height: 300px; */
+    max-width: 317px;
+    max-height: 500px;
+    
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    /* word-wrap: break-word; */
-    /* position: relative; */
-    /* position: relative; */
-    /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+
     border: 1px solid #E2E2E2;
     border-radius: 10px;
     overflow: scroll;
 }
 
 .cartNumbers{
-
+    color: #868686;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
     font-size: 15px;
     word-break: break-word;
 }
@@ -163,7 +202,7 @@ span.numbers {
     
     width: 234px;
     height: 86px;
-    margin-top: 32px;
+    margin-top: 16px;
     display: flex;
     align-items: center;
 }
@@ -178,7 +217,7 @@ span.numbers {
 .cartElements{
     padding-left: 12px;
     width: 234px;
-    line-height: 25px;
+    /* line-height: 25px; */
     border-radius: 5px;
     line-height: 25px;
     border-radius: 5px;
@@ -186,12 +225,7 @@ span.numbers {
 
 .saveCart{
     
-    /* position: -webkit-sticky; */
-    /* position: sticky; */
-    /* top: 20px; */
-    /* bottom: 0; */
-    /* right: */
-    width: 300px;
+    width: 317px;
     height: 96px;
     border: 1px solid #E2E2E2;
     background: #F4F4F4 0% 0% no-repeat padding-box;
@@ -201,6 +235,20 @@ span.numbers {
     font-size: 35px;
     color: #27C383;
     
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.cart::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.cart::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+.cart::-webkit-scrollbar-thumb {
+    background: #dad7d7;
 }
 
 .saveCart > img{
@@ -210,43 +258,60 @@ span.numbers {
 }
 
 .TitleCart{
-    /* position: -webkit-sticky; */
-  /* position: sticky; */
+    color: #707070;
+    font-size: 24px;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
     margin-left: 19px;
     font-size: 24px;
-    /* top: 48; */
     padding-top: 32px;
     
 }
 
 .ValueCart{
+    color: #707070;
+    font-size: 24px;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
     margin-left: 19px;
     font-size: 24px;
     
     margin-top: 40px;
     margin-bottom: 47px;
 }
+
+
+.ValueCart > span{
+    font-weight: lighter;
+}
+/* 
 .container{
     min-height: 100%;
     margin: 0 auto -50px;
     
-}
+} */
 
  footer{
-    /* position: fixed;
+     position: fixed;
     left: 0;
     bottom:0;
     width: 100%;
     
-    color: black;*/
-    /* text-align: center;
+    color: black;
+    /* text-align: center; */
   
-    padding-bottom: 28px;  */
+    padding-bottom: 28px;
     /* height: 10px; */
-    border-top: 2px solid #EBEBEB;
+     border-top: 2px solid #EBEBEB;
     padding-top: 30px;
     padding-bottom: 10px;
-    height: 70px;
+    /* height: 70px; */
+    /* position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0; */
 } 
 
 .main1{
@@ -261,22 +326,52 @@ span.numbers {
 }
 
 .head > h1{
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 44px;
     margin-left: 141px;
     margin-right: 74px;
+    color: #707070;
 }
-
+.head > h3{
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    color: #707070;
+    
+}
 .head-right {
     display: flex;
-    margin-top: 15px;
+    margin-top: 28px;
+    
+
     align-items: center;
     justify-content: flex-start;
 }
-/* .head-right > h3{
-    margin-right: 40px;
-    margin-left: 230px;
-} */
+.head-right > h3{
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #707070;
+    display: flex;
+    align-items: center;
+    color: #707070;
+    
+}
+
+.head-right > h3 > img{
+   width: 21px;
+   height: 20px;
+    margin-left: 10px;
+}
+
 .head-right > h2{
-    /* margin-left: 587px; */
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #707070;
     margin-left: 166px;
     margin-right: 40px;
 }
@@ -320,7 +415,7 @@ span.numbers {
 
 .grid-template-areas-4 {
 	grid-template-columns: 50% 50%;
-	grid-template-rows: 50px 80% 10px;
+	grid-template-rows: 40px 80% 10px;
 	grid-template-areas:
 		"logo nav"
 		"content advert"

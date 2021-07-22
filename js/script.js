@@ -98,7 +98,7 @@
     function addElementsIntoCartSection(cartElement) {
 
         totalPrice += cartElement.price;
-        console.log('price', cartElement.price.toString());
+        
         var a = doc.createElement('a');
         var principalDiv = doc.createElement('div');
         var div = doc.createElement('div');
@@ -127,7 +127,10 @@
         div.setAttribute('class', 'cartElements');
         principalDiv.setAttribute('class', 'divCart');
         $p.setAttribute('class', 'cartNumbers');
-
+        $type.setAttribute('class','cartNumbers');
+        $price.setAttribute('class','cartNumbers');
+        $price.style.fontWeight = 'normal';
+        $type.style.fontSize = '16px';
         $type.style.color = cartElement.color;
 
         div.style.borderLeft = `4px solid ${cartElement.color}`;

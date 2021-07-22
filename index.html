@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        
+
         <section class="grid grid-template-areas-4">
             <div class="item logo">
                 <header>
@@ -24,9 +24,9 @@
             </div>
             <div class="item nav">
                 <div class="head-right">
-                <h2>Account</h2>
-                <h3>Logout</h3>
-            </div>
+                    <h2>Account</h2>
+                    <h3>Log out <img src="./images/teste.svg" /></h3>
+                </div>
             </div>
             <div class="item content">
                 <section class="main-header">
@@ -41,9 +41,10 @@
                         <button class="mega" data-js="btns">Mega-Sena</button>
                         <button class="lotomania" data-js="btns">Lotomania</button>
                     </section>
-
-                    <p data-js="beforeBetInfo">Fill your bet</p>
-                    <span data-js="betInformation"></span>
+                    <div class="bet">
+                        <p data-js="beforeBetInfo">Fill your bet</p>
+                        <span data-js="betInformation"></span>
+                    </div>
 
                     <div class="gameNumbers" data-js="gameNumbers"></div>
                     <div class="ActionButtons">
@@ -62,21 +63,21 @@
                 <div class="main2">
                     <section class="cart" data-js="cart">
                         <h1 class="TitleCart">CART</h1>
-                        <h3 class="ValueCart" data-js="priceElement"><span>CART</span> TOTAL: R$ <span
+                        <h3 class="ValueCart" data-js="priceElement">CART <span>TOTAL: R$</span>  <span
                                 data-js="totalPrice">0,00</span></h3>
                         <button class="saveCart" data-js="saveCart">Save <img
                                 src="images/icons8-seta-longa-à-direita-60.png"></button>
                     </section>
                 </div>
             </div>
-        </div>
+
             <div class="item footer">
                 <footer>
                     <p>Copyright 2020 Luby Software</p>
                 </footer>
             </div>
         </section>
-    
+    </div>
     <script src="js/dom.js"></script>
     <script src="js/script.js"></script>
 
