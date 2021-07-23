@@ -138,12 +138,12 @@
 
         principalDiv.appendChild(div);
         $cartContent.appendChild(principalDiv);
-        $cartContent.setAttribute('class','cartContent');
+        $cartContent.setAttribute('class', 'cartContent');
         var empityCartText = new DOM('[data-js="empityCart"]');
-        if(empityCartText.get()[0]){
+        if (empityCartText.get()[0]) {
             $cart.get()[0].removeChild(empityCartText.get()[0]);
         }
-      
+
         $cart.get()[0].insertBefore($cartContent, $priceElement.get()[0]);
 
         var formaredPrice = formatPriceToDisplay(totalPrice);
@@ -196,12 +196,12 @@
 
             // handleClearSelectedNumbers();
 
-            chosingNumbers = fillNumbers( elementos.maxNumber, elementos.range);
+            chosingNumbers = fillNumbers(elementos.maxNumber, elementos.range);
 
             Array.prototype.forEach.call($gameNumbers.get()[0].children, function (element) {
                 for (var i = 0; i < chosingNumbers.length; i++) {
-                    if (chosingNumbers[i] === +element.textContent) {
-                        
+                    if (chosingNumbers[i] === element.textContent) {
+
                         element.style.backgroundColor = 'grey';
                     }
                 }
@@ -211,17 +211,26 @@
         }
     }
 
-    function fillNumbers(maxNumber, range){
+
+
+    function fillNumbers(maxNumber, range) {
         var arr = chosingNumbers;
-        console.log('teste', arr);
-        while(arr.length < maxNumber){
+        while (arr.length < maxNumber) {
+
+
             var aleatorio = Math.floor(Math.random() * range) + 1;
-            if(arr.indexOf(aleatorio) ===-1){
-                arr.push(aleatorio);
+            console.log('elemento', aleatorio);
+            console.log('resultado', arr.indexOf(aleatorio.toString()))
+            if (arr.indexOf(aleatorio.toString()) === -1) {
+                arr.push(aleatorio.toString());
             }
         }
+
         return arr;
+
     }
+
+
 
     function handleClearSelectedNumbers() {
         var numbersQuantty = chosingNumbers.length;
@@ -327,26 +336,31 @@
     function handleChoseNumber() {
         console.log(chosingNumbers.length, elementos.maxNumber);
         console.log(elementos);
-        
+
         if (chosingNumbers.length < elementos.maxNumber) {
-            chosingNumbers.push(this.textContent);
-            this.style.backgroundColor  ='grey';
+
             addElement.apply(this, chosingNumbers);
+
+
         }
         else {
             alert('Você já selecionou todos os números');
         }
     }
 
-    function addElement(){
-        var value = this.textContent;
-        console.log('this', this.textContent);
-        console.log('array', arguments);
-        Array.prototype.forEach.call(arguments, function(number){
-            if(value === number){
-                console.log('já tenho esse');
-            }
-        })
+    function addElement() {
+
+        if (chosingNumbers.indexOf(this.textContent.toString()) === -1) {
+
+            chosingNumbers.push(this.textContent);
+            console.log('chosing', chosingNumbers)
+            this.style.backgroundColor = 'grey';
+        }
+        else {
+            alert('você já possui esse número');
+        }
+
+
     }
 
     function cleanDiv(obj) {
