@@ -22,6 +22,8 @@
 
     function init() {
         placingButtons();
+        // console.log(objectName);
+        // addingActionToTheButton(objectName[0]);
     }
 
     init();
@@ -194,7 +196,7 @@
         });
         
         return  sortedArray.sort(comparaNumeros);
-        // console.log('sorted', teste.sort(comparaNumeros));
+        
     }
     function handleCompletNumbers() {
         try {
@@ -259,8 +261,8 @@
 
     function handlegameBtnClick() {
         handleClearSelectedNumbers();
-
-        fillBetName.call(this);
+        var content = this.textContent;
+        fillBetName(content);
         addingActionToTheButton(this.textContent);
     }
 
@@ -268,6 +270,7 @@
     function placingButtons() {
         var array = ajax().then(function (response) {
             createButtons(response);
+
         });
 
 
@@ -290,6 +293,7 @@
 
     }
 
+
     function createButtons(array) {
 
         var buttonName = array.map(function (btn) {
@@ -301,12 +305,12 @@
             $gameButton.get()[0].appendChild(button);
             button.addEventListener('click', handlegameBtnClick);
         });
-
-
+        fillBetName(objectName[0])
+        addingActionToTheButton(objectName[0]);
     }
 
-    function fillBetName() {
-        $betName.get()[0].textContent = ' FOR ' + this.textContent.toUpperCase();
+    function fillBetName(element) {
+        $betName.get()[0].textContent = ' FOR ' + element.toString().toUpperCase();
     }
 
     async function addingActionToTheButton(obj) {
