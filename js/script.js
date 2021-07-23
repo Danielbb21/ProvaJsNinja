@@ -44,11 +44,11 @@
 
     function verifyTotalPrice() {
 
-        console.log('filhos', $cartContent.children[0]);
+        
         if (cart.length <= 0) {
             throw new Error('Você ainda não tem nenhum jogo no carrinho');
         }
-        console.log(elementos);
+        
         if (totalPrice < elementos.minCartValue) {
             throw new Error(`Você ainda não possui o valor mínimo pedido que é ${elementos.minCartValue}`)
         }
@@ -73,10 +73,6 @@
             if (!verfifyChosenNumbers()) {
                 throw new Error('Números não escolhidos');
             }
-
-
-            console.log(elementos);
-            console.log(chosingNumbers.sort(comparaNumeros).toString());
             cart.push({
 
                 numbers: chosingNumbers.sort(comparaNumeros).toString(),
@@ -84,7 +80,7 @@
                 color: elementos.color,
                 price: elementos.price
             });
-            console.log('CART', cart);
+            
             addElementsIntoCartSection(cart[cart.length - 1]);
             handleClearSelectedNumbers();
         }
@@ -95,7 +91,7 @@
     }
 
     function verfifyChosenNumbers() {
-        console.log('chosing numbers length', chosingNumbers.length);
+        
         return chosingNumbers.length > 0 ? true : false;
     }
     function addElementsIntoCartSection(cartElement) {
@@ -154,25 +150,22 @@
 
         var arrayNumber = convertToArrayOfNumbers(numbers);
 
-        console.log('Array converted', arrayNumber);
+        
         searachIntoCartNumbers(cart, numbers);
     }
 
     function searachIntoCartNumbers(cart, number) {
-        console.log('number', number.toString());
-        console.log(cart);
-
+        
         var t = [];
         var cartNumbers = cart.map(function (element) {
 
             return element.numbers;
         })
 
-        console.log('cartNumber', cartNumbers);
+        
         var position = cartNumbers.indexOf(number.toString());
         var element = cart.splice(position, 1);
-        console.log('elemento removido', element[0].numbers);
-        console.log('pós remoção', cart);
+        
         removeElementInsideTheCart(element[0]);
 
     }
@@ -212,15 +205,15 @@
             }
 
             handleClearSelectedNumbers();
-            console.log(elementos.range, elementos.maxNumber);
+            
             chosingNumbers = fillNumbersIntoHtml(elementos.maxNumber, elementos.range);
-            console.log('elementos esoclhidos', chosingNumbers);
+            
 
             Array.prototype.forEach.call($gameNumbers.get()[0].children, function (element) {
                 for (var i = 0; i < chosingNumbers.length; i++) {
                     if (chosingNumbers[i] === +element.textContent) {
                         element.style.backgroundColor = 'red';
-                        console.log(chosingNumbers[i], element.textContent);
+                        
                     }
                 }
             });
@@ -240,7 +233,7 @@
                 chosingNumbers.pop();
             }
 
-            console.log('aqui', chosingNumbers);
+            
             cleanColorFields();
         }
 
@@ -255,7 +248,7 @@
 
     function handlegameBtnClick() {
         handleClearSelectedNumbers();
-        console.log('selected numbers', chosingNumbers)
+        
         fillBetName.call(this);
         addingActionToTheButton(this.textContent);
     }
@@ -286,7 +279,7 @@
     }
 
     function createButtons(array) {
-        console.log('array of numbers', array);
+        
         var buttonName = array.map(function (btn) {
             var button = doc.createElement('button');
             objectName.push(btn.type);
@@ -297,7 +290,7 @@
             button.addEventListener('click', handlegameBtnClick);
         });
 
-        console.log('Button Name', buttonName);
+        
     }
 
     function fillBetName() {
@@ -322,32 +315,16 @@
         var numeros = fillNumbersIntoHtml(args.range, args.range);
 
         cleanDiv($gameNumbers.get()[0]);
-
+        
         numeros.sort(comparaNumeros).forEach(function (number) {
             var span = doc.createElement('span');
             var spText = doc.createTextNode(number);
             span.appendChild(spText);
             span.setAttribute('class', 'numbers');
-
-            span.className = 'numbers';
-
-            span.style.width = `63px`;
-            span.style.height = `63px`;
-            span.style.display = 'flex';
-            span.style.alignItems = 'center';
-            span.style.justifyContent = 'center';
-            span.style.marginLeft = '12px';
-            span.style.marginTop = '20px';
-
-            span.style.textAlign = 'left';
-
-            span.style.borderRadius = '30px';
             span.style.backgroundColor = args.color;
             span.style.color = '#FFFFFF';
-            $gameNumbers.get()[0].appendChild(span);
-
+            $gameNumbers.get()[0].appendChild(span);  
         })
-
     }
 
     function cleanDiv(obj) {
@@ -381,7 +358,7 @@
             if (element === obj) {
                 index = indexButton;
             }
-        }); console.log('name Button', index);
+        }); 
         return array[index];
 
     }

@@ -128,19 +128,23 @@ main > h1 {
     
     display: flex;
     flex-wrap: wrap;
+
+    
     
 }
 
 span.numbers {
-    width: '63px';
-    height: '65px';
-    display: 'flex';
-    align-items: 'center';
-    justify-content: 'center';
-    margin-left: '12px';
-    margin-bottom: '20px';
-    text-align: 'left';
-    border-radius: '30px';
+    width: 63px;
+    height: 63px;
+   display: flex;
+   align-items: center;
+   justify-Content: center;
+   margin-left: 12px;
+    margin-top: 20px;
+
+    text-align: left;
+
+    border-radius: 30px;
 }
 
 .addCart {
@@ -349,6 +353,7 @@ span.numbers {
     margin-left: 10%;
     border-bottom: 2px solid #EBEBEB;
     padding-bottom: 25px;
+    
     align-items: center;
     justify-content: flex-start;
 }
