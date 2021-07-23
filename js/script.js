@@ -1,7 +1,8 @@
 (function (DOM, doc) {
     "use strict";
 
-    var $gameBtn = new DOM('[data-js="btns"]');
+    
+    var $gameButton = new DOM('[data-js="buttons"]');
     var $betName = new DOM('[data-js="betName"]');
     var $betInformation = new DOM('[data-js="betInformation"]');
     var $gameNumbers = new DOM('[data-js="gameNumbers"]');
@@ -13,14 +14,16 @@
     var $priceElement = new DOM('[data-js="priceElement"]');
     var $cartContent = doc.createElement('div');
     var $saveCart = new DOM('[data-js="saveCart"]');
-
+    var objectName = [];
     var colorElement;
     var elementos = [];
     var chosingNumbers = [];
     var cart = [];
     var totalPrice = 0;
-
-    $gameBtn.on('click', handlegameBtnClick);
+    function init(){
+        handleAjaxTeste();
+    }
+    init();
     $complet.on('click', handleCompletNumbers);
     $clear.on('click', handleClearSelectedNumbers);
     $addCart.on('click', handleAddCart);
@@ -57,7 +60,7 @@
         while ($cartContent.firstChild) {
             $cartContent.removeChild($cartContent.lastChild);
             cart.pop();
-            
+
         }
         totalPrice = 0;
         var formaredPrice = formatPriceToDisplay(totalPrice);
@@ -98,7 +101,7 @@
     function addElementsIntoCartSection(cartElement) {
 
         totalPrice += cartElement.price;
-        
+
         var a = doc.createElement('a');
         var principalDiv = doc.createElement('div');
         var div = doc.createElement('div');
@@ -127,8 +130,8 @@
         div.setAttribute('class', 'cartElements');
         principalDiv.setAttribute('class', 'divCart');
         $p.setAttribute('class', 'cartNumbers');
-        $type.setAttribute('class','cartNumbers');
-        $price.setAttribute('class','cartNumbers');
+        $type.setAttribute('class', 'cartNumbers');
+        $price.setAttribute('class', 'cartNumbers');
         $price.style.fontWeight = 'normal';
         $type.style.fontSize = '16px';
         $type.style.color = cartElement.color;
@@ -256,7 +259,40 @@
         fillBetName.call(this);
         handleAjax(this.textContent);
     }
+    function fillNumbers() {
+        handleAjaxTeste()
+    }
 
+    function handleAjaxTeste() {
+
+        var ajax = new XMLHttpRequest();
+        ajax.open('GET', '../games.json');
+        ajax.send();
+        ajax.onreadystatechange = function () {
+
+            if (isRequestOk(this)) {
+                var dataParsed = JSON.parse(ajax.responseText);
+                var array = dataParsed.types;
+                console.log(array);
+                createButtons(array);
+            }
+        }
+    }
+
+    function createButtons(array) {
+        console.log('array of numbers', array);
+        var buttonName = array.map(function (btn) {
+            var button = doc.createElement('button');
+            objectName.push(btn.type);
+            button.textContent = btn.type;
+            button.style.borderColor = `${btn.color}`;
+            button.style.color = `${btn.color}`;
+            $gameButton.get()[0].appendChild(button);
+            button.addEventListener('click', handlegameBtnClick);
+        });
+
+        console.log('Button Name', buttonName);
+    }
 
     function fillBetName() {
         $betName.get()[0].textContent = ' FOR ' + this.textContent.toUpperCase();
@@ -285,7 +321,7 @@
         var numeros = fillNumbersIntoHtml(args.range, args.range);
 
         cleanDiv($gameNumbers.get()[0]);
-       
+
         numeros.sort(comparaNumeros).forEach(function (number) {
             var span = doc.createElement('span');
             var spText = doc.createTextNode(number);
@@ -293,9 +329,9 @@
             span.setAttribute('class', 'numbers');
 
             span.className = 'numbers';
-       
+
             span.style.width = `63px`;
-            span.style.height =`63px`;
+            span.style.height = `63px`;
             span.style.display = 'flex';
             span.style.alignItems = 'center';
             span.style.justifyContent = 'center';
@@ -308,9 +344,9 @@
             span.style.backgroundColor = args.color;
             span.style.color = '#FFFFFF';
             $gameNumbers.get()[0].appendChild(span);
-            
+
         })
-        
+
     }
 
     function cleanDiv(obj) {
@@ -338,14 +374,15 @@
 
 
     function choseElements(obj, array) {
-        switch (obj) {
-            case 'Lotofácil':
-                return array[0];
-            case 'Mega-Sena':
-                return array[1];
-            case 'Lotomania':
-                return array[2];
-        }
+        var index;
+        objectName.forEach(function (element, indexButton) {
+
+            if (element === obj) {
+                index = indexButton;
+            }
+        }); console.log('name Button', index);
+        return array[index];
+
     }
 
     function isRequestOk(obj) {
