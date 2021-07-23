@@ -1,7 +1,6 @@
 (function (DOM, doc) {
     "use strict";
-
-
+    
     var $gameButton = new DOM('[data-js="buttons"]');
     var $betName = new DOM('[data-js="betName"]');
     var $betInformation = new DOM('[data-js="betInformation"]');
@@ -20,9 +19,11 @@
     var chosingNumbers = [];
     var cart = [];
     var totalPrice = 0;
+
     function init() {
         placingButtons();
     }
+
     init();
     $complet.on('click', handleCompletNumbers);
     $clear.on('click', handleClearSelectedNumbers);
@@ -44,15 +45,16 @@
 
     function verifyTotalPrice() {
 
-        
+
         if (cart.length <= 0) {
             throw new Error('Você ainda não tem nenhum jogo no carrinho');
         }
-        
+
         if (totalPrice < elementos.minCartValue) {
             throw new Error(`Você ainda não possui o valor mínimo pedido que é ${elementos.minCartValue}`)
         }
-        alert('Parabéns, desejamos muita sorte para vocês');
+
+        alert('Parabéns, desejamos muita sorte para você');
         cleanCart();
     }
 
@@ -73,14 +75,14 @@
             if (!verfifyChosenNumbers()) {
                 throw new Error('Números não escolhidos');
             }
-            cart.push({
 
+            cart.push({
                 numbers: chosingNumbers.sort(comparaNumeros).toString(),
                 type: elementos.type,
                 color: elementos.color,
                 price: elementos.price
             });
-            
+
             addElementsIntoCartSection(cart[cart.length - 1]);
             handleClearSelectedNumbers();
         }
@@ -91,9 +93,10 @@
     }
 
     function verfifyChosenNumbers() {
-        
+
         return chosingNumbers.length > 0 ? true : false;
     }
+
     function addElementsIntoCartSection(cartElement) {
 
         totalPrice += cartElement.price;
@@ -107,12 +110,11 @@
         var pText = doc.createTextNode(cartElement.numbers);
         var $price = doc.createElement('span');
         var img = doc.createElement('img');
+        var textPrice = ' R$ ' + formatPriceToDisplay(cartElement.price);
 
         img.src = '../images/caixote-de-lixo.png';
         img.setAttribute('class', 'trashElement');
         a.appendChild(img);
-        var textPrice = ' R$ ' + formatPriceToDisplay(cartElement.price);
-
         $p.appendChild(pText);
         $type.appendChild(textType);
 
@@ -131,43 +133,33 @@
         $price.style.fontWeight = 'normal';
         $type.style.fontSize = '16px';
         $type.style.color = cartElement.color;
-
         div.style.borderLeft = `4px solid ${cartElement.color}`;
 
         principalDiv.appendChild(div);
         $cartContent.appendChild(principalDiv);
         $cart.get()[0].insertBefore($cartContent, $priceElement.get()[0]);
+
         var formaredPrice = formatPriceToDisplay(totalPrice);
-
         $totalPrice.get()[0].textContent = formaredPrice;
-
         a.addEventListener('click', handleDeleteButton);
 
     }
 
     function handleDeleteButton() {
         var numbers = this.nextElementSibling.children[0].textContent.split(',');
-
-        var arrayNumber = convertToArrayOfNumbers(numbers);
-
-        
         searachIntoCartNumbers(cart, numbers);
     }
 
     function searachIntoCartNumbers(cart, number) {
-        
-        var t = [];
-        var cartNumbers = cart.map(function (element) {
 
+
+        var cartNumbers = cart.map(function (element) {
             return element.numbers;
         })
 
-        
         var position = cartNumbers.indexOf(number.toString());
         var element = cart.splice(position, 1);
-        
         removeElementInsideTheCart(element[0]);
-
     }
 
     function removeElementInsideTheCart(obj) {
@@ -178,19 +170,10 @@
                 return;
             }
         });
+
         totalPrice -= obj.price;
         var formaredPrice = formatPriceToDisplay(totalPrice);
-
         $totalPrice.get()[0].textContent = formaredPrice;
-
-    }
-
-    function convertToArrayOfNumbers(arr) {
-        var arrayNumber = arr.map(function (number) {
-            return Number(number);
-        });
-
-        return arrayNumber;
     }
 
     function formatPriceToDisplay(price) {
@@ -205,15 +188,13 @@
             }
 
             handleClearSelectedNumbers();
-            
+
             chosingNumbers = fillNumbersIntoHtml(elementos.maxNumber, elementos.range);
-            
 
             Array.prototype.forEach.call($gameNumbers.get()[0].children, function (element) {
                 for (var i = 0; i < chosingNumbers.length; i++) {
                     if (chosingNumbers[i] === +element.textContent) {
                         element.style.backgroundColor = 'red';
-                        
                     }
                 }
             });
@@ -224,20 +205,14 @@
 
 
     function handleClearSelectedNumbers() {
-
-
-
         var numbersQuantty = chosingNumbers.length;
+
         if (numbersQuantty > 0) {
             for (var i = 0; i < numbersQuantty; i++) {
                 chosingNumbers.pop();
             }
-
-            
             cleanColorFields();
         }
-
-
     }
 
     function cleanColorFields() {
@@ -248,19 +223,20 @@
 
     function handlegameBtnClick() {
         handleClearSelectedNumbers();
-        
+
         fillBetName.call(this);
         addingActionToTheButton(this.textContent);
     }
 
 
-     function placingButtons() {
-        var array =  ajax().then(function (response) {
+    function placingButtons() {
+        var array = ajax().then(function (response) {
             createButtons(response);
         });
 
 
     }
+
     async function ajax() {
         var ajax = new XMLHttpRequest();
         ajax.open('GET', '../games.json');
@@ -279,7 +255,7 @@
     }
 
     function createButtons(array) {
-        
+
         var buttonName = array.map(function (btn) {
             var button = doc.createElement('button');
             objectName.push(btn.type);
@@ -290,16 +266,16 @@
             button.addEventListener('click', handlegameBtnClick);
         });
 
-        
+
     }
 
     function fillBetName() {
         $betName.get()[0].textContent = ' FOR ' + this.textContent.toUpperCase();
     }
 
-   async function addingActionToTheButton(obj) {
+    async function addingActionToTheButton(obj) {
 
-        var array =  ajax().then(function (response) {
+        var array = ajax().then(function (response) {
 
             elementos = choseElements(obj, response);
 
@@ -315,7 +291,7 @@
         var numeros = fillNumbersIntoHtml(args.range, args.range);
 
         cleanDiv($gameNumbers.get()[0]);
-        
+
         numeros.sort(comparaNumeros).forEach(function (number) {
             var span = doc.createElement('span');
             var spText = doc.createTextNode(number);
@@ -323,7 +299,7 @@
             span.setAttribute('class', 'numbers');
             span.style.backgroundColor = args.color;
             span.style.color = '#FFFFFF';
-            $gameNumbers.get()[0].appendChild(span);  
+            $gameNumbers.get()[0].appendChild(span);
         })
     }
 
@@ -358,7 +334,7 @@
             if (element === obj) {
                 index = indexButton;
             }
-        }); 
+        });
         return array[index];
 
     }

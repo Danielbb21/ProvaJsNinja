@@ -10,43 +10,89 @@ body {
 }
 
 html, body {
-    height: 100%;
-    margin: 0;
-    
+    height: 100%; 
   }
-  html{
+
+html{
     font-size: 62.5%;
-  }
-footer > p {
-    text-align: center;
-    color: #707070;
-    font-size: 1.7rem;
+}
+
+.container{
+    position: relative;
+    min-height: 100%;
+    margin: 0 auto -5rem;
+}
+
+/* ======= Header =======*/
+.head{    
+    display: flex;
+    margin-top: 1.5rem;
+    align-items: center;    
+}
+
+.title{
+    border-bottom: .6rem solid #B5C401;
+    border-radius: .6rem;
+    padding-bottom: .4rem;
+}
+
+.head > h1{
     font-family:  Helvetica, sans-serif;
-    font-weight: normal;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 4.4rem;
+    margin-left: 14.1rem;
+    margin-right: 7.4rem;
+    color: #707070;
+}
+.head > h3{
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2rem;
+    color: #707070;    
+}
+
+.head-right {
+    display: flex;
+    margin-top: 2.8rem;
+    margin-left: 10%;    
+    font-size: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.head-right {
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    color: #707070;
+}
+
+.head-right > h3 > img{
+   width: 2.1rem;
+   height: 2rem;
+    margin-left: 1rem;
+}
+
+.head-right > h2{
+    margin-left: 13.6rem;
+    margin-right: 4rem;
+}
+
+/* ======= Main =======*/
+main {
+    margin-left: 13rem;
     
 }
-.container{
+
+.main1{
+    margin-bottom: 12.8rem;
     position: relative;
 }
 
-footer{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-top: .2rem solid #EBEBEB;
-    padding-top: 3rem;
-    padding-bottom: 2.8rem;
-    text-align: center;
-}
-main {
-    margin-left: 13rem;
-}
-
-main > h1 {
-    color: #707070;
-    font-family: 2.4rem;
-}
 .main-header > h1{
     font-family:  Helvetica, sans-serif;
     font-size: 2.4rem;
@@ -55,9 +101,11 @@ main > h1 {
     color: #707070;
     margin-bottom: 3.3rem;
 }
+
 .main-header > h1 >span{
     font-weight: lighter;
 }
+
 .main-header > p {
     font-family:  Helvetica, sans-serif;
     font-weight: bold;
@@ -81,7 +129,6 @@ main > h1 {
     margin-bottom: 3.6rem;
 }
 
-
 .bet > p{
     color: #868686;
     font-size: 1.7rem;
@@ -89,33 +136,30 @@ main > h1 {
     font-weight: bold;
     font-style: italic;
 }
+
 .bet > span{
     color: #868686;
     font-size: 1.7rem;
-    font-family:  Helvetica, sans-serif;
-    
+    font-family:  Helvetica, sans-serif;    
     font-style: italic;
 }
+
 .ActionButtons {
     display: flex;
     width: 100vw;
     font-size: 1.6rem;
     font-family:  Helvetica, sans-serif;
     font-weight: normal;
-    
-    margin-top: 5rem;
-    
+    margin-top: 5rem;    
 }
+
+/* ======= Numbers of the game =======*/
 
 .gameNumbers {
     width: 69.4rem;
     position: relative;
-    
     display: flex;
     flex-wrap: wrap;
-
-    
-    
 }
 
 span.numbers {
@@ -128,9 +172,10 @@ span.numbers {
     margin-top: 2rem;
     font-size: 1.6rem;
     text-align: left;
-
     border-radius: 3rem;
 }
+
+/* ======= ActionButtons =======*/
 
 .addCart {
     width: 20.9rem;
@@ -148,15 +193,13 @@ span.numbers {
     width: 2.7rem;
     height: 2.5rem;
     margin-left: 2.557rem;
-    margin-right: 2.886rem;
-    
+    margin-right: 2.886rem; 
 }
 
 .addCart>span {
     font-size: 1.6rem;
     text-align: left;
     color: #FFFFFF;
-    
     opacity: 1;
 }
 
@@ -180,17 +223,16 @@ span.numbers {
     margin-right: 14.2rem;
 }
 
+/* ======= Cart =======*/
+
 .cart {
     width: 32.5rem;
-    max-height: 41.7rem;
-    
+    max-height: 48.4rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-
     border: .1rem solid #E2E2E2;
     border-radius: 1rem;
     overflow: scroll;
     margin-left: 15%;
-    
 }
 
 .cartNumbers{
@@ -221,7 +263,6 @@ span.numbers {
 .cartElements{
     padding-left: 1.2rem;
     width: 23.4rem;
-    
     border-radius: .5rem;
     line-height: 2.5rem;
     border-radius: .5rem;
@@ -238,7 +279,6 @@ span.numbers {
     justify-content: center;
     font-size: 3.5rem;
     color: #27C383;
-    
     font-family:  Helvetica, sans-serif;
     font-weight: bold;
     font-style: italic;
@@ -270,7 +310,6 @@ span.numbers {
     margin-left: 1.9rem;
     font-size: 2.4rem;
     padding-top: 3.2rem;
-    
 }
 
 .ValueCart{
@@ -281,7 +320,6 @@ span.numbers {
     font-style: italic;
     margin-left: 1.9rem;
     font-size: 2.4rem;
-    
     margin-top: 4rem;
     margin-bottom: 4.7rem;
 }
@@ -291,95 +329,34 @@ span.numbers {
     font-weight: lighter;
 }
 
-.container{
-    min-height: 100%;
-    margin: 0 auto -5rem;
-    
-}
+/* ======= Footer =======*/
 
-
-
-.main1{
-    margin-bottom: 12.8rem;
-    position: relative;
-}
-
-.head{
-    
-    display: flex;
-    margin-top: 1.5rem;
-    align-items: center;
-    
-    
-}
-.title{
-    border-bottom: .6rem solid #B5C401;
-    border-radius: .6rem;
-    padding-bottom: .4rem;
-}
-.head > h1{
+footer > p {
+    text-align: center;
+    color: #707070;
+    font-size: 1.7rem;
     font-family:  Helvetica, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 4.4rem;
-    margin-left: 14.1rem;
-    margin-right: 7.4rem;
-    color: #707070;
+    font-weight: normal;   
 }
-.head > h3{
-    font-family:  Helvetica, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 2rem;
-    color: #707070;
-    
-}
-.head-right {
-    display: flex;
-    margin-top: 2.8rem;
-    margin-left: 10%;
-    
-    
-    font-size: 2rem;
-    align-items: center;
-    justify-content: flex-start;
-}
-.head-right > h3{
-    font-family:  Helvetica, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    color: #707070;
-    display: flex;
-    align-items: center;
-    color: #707070;
-    
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: .2rem solid #EBEBEB;
+    padding-top: 3rem;
+    padding-bottom: 2.8rem;
+    text-align: center;
 }
 
-.head-right > h3 > img{
-   width: 2.1rem;
-   height: 2rem;
-    margin-left: 1rem;
-}
+/* ======= Display Grid =======*/
 
-.head-right > h2{
-    font-family:  Helvetica, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    color: #707070;
-    margin-left: 16.6rem;
-    margin-right: 4rem;
-}
-
-/* Grid */
-.grid {
-    
-    
+.grid {  
 	display: grid;
 }
 
 .logo {
 	grid-area: logo;
-    
 }
 
 .nav {
