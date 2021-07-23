@@ -232,7 +232,7 @@ span.numbers {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: .1rem solid #E2E2E2;
     border-radius: 1rem;
-    overflow: scroll;
+    /* overflow: scroll; */
     margin-left: 15%;
 }
 
@@ -267,6 +267,21 @@ span.numbers {
     border-radius: .5rem;
     line-height: 2.5rem;
     border-radius: .5rem;
+   
+}
+
+.cartContent{
+    overflow: scroll;
+    max-height: 41.2rem;
+}
+
+.empityCart{
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2.4rem;
+    margin-top: 2.5rem;
+    text-align: center;
 }
 
 .saveCart{
