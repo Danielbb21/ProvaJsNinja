@@ -53,14 +53,7 @@ html{
     color: #707070;    
 }
 
-.head-right {
-    display: flex;
-    margin-top: 2.8rem;
-    margin-left: 10%;    
-    font-size: 2rem;
-    align-items: center;
-    justify-content: flex-start;
-}
+
 
 .head-right {
     font-family:  Helvetica, sans-serif;
@@ -69,6 +62,14 @@ html{
     display: flex;
     align-items: center;
     color: #707070;
+    font-size: 1.6rem;
+    margin-top: 2.8rem;
+    margin-left: 10%;    
+}
+
+.head-right > h3{
+    display: flex;
+    align-items: center;
 }
 
 .head-right > h3 > img{
@@ -146,7 +147,7 @@ main {
 
 .ActionButtons {
     display: flex;
-    width: 100vw;
+    width: 68.4rem;
     font-size: 1.6rem;
     font-family:  Helvetica, sans-serif;
     font-weight: normal;
