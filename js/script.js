@@ -1,7 +1,7 @@
 (function (DOM, doc) {
     "use strict";
 
-    
+
     var $gameButton = new DOM('[data-js="buttons"]');
     var $betName = new DOM('[data-js="betName"]');
     var $betInformation = new DOM('[data-js="betInformation"]');
@@ -20,8 +20,8 @@
     var chosingNumbers = [];
     var cart = [];
     var totalPrice = 0;
-    function init(){
-        handleAjaxTeste();
+    function init() {
+        placingButtons();
     }
     init();
     $complet.on('click', handleCompletNumbers);
@@ -257,26 +257,32 @@
         handleClearSelectedNumbers();
         console.log('selected numbers', chosingNumbers)
         fillBetName.call(this);
-        handleAjax(this.textContent);
-    }
-    function fillNumbers() {
-        handleAjaxTeste()
+        addingActionToTheButton(this.textContent);
     }
 
-    function handleAjaxTeste() {
 
+     function placingButtons() {
+        var array =  ajax().then(function (response) {
+            createButtons(response);
+        });
+
+
+    }
+    async function ajax() {
         var ajax = new XMLHttpRequest();
         ajax.open('GET', '../games.json');
         ajax.send();
-        ajax.onreadystatechange = function () {
+        return new Promise(function (resolve, reject) {
+            ajax.onreadystatechange = function () {
 
-            if (isRequestOk(this)) {
-                var dataParsed = JSON.parse(ajax.responseText);
-                var array = dataParsed.types;
-                console.log(array);
-                createButtons(array);
+                if (isRequestOk(this)) {
+                    var dataParsed = JSON.parse(ajax.responseText);
+                    var array = dataParsed.types;
+                    resolve(array);
+                }
             }
-        }
+        })
+
     }
 
     function createButtons(array) {
@@ -298,21 +304,16 @@
         $betName.get()[0].textContent = ' FOR ' + this.textContent.toUpperCase();
     }
 
-    function handleAjax(obj) {
+   async function addingActionToTheButton(obj) {
 
-        var ajax = new XMLHttpRequest();
-        ajax.open('GET', '../games.json');
-        ajax.send();
-        ajax.onreadystatechange = function () {
+        var array =  ajax().then(function (response) {
 
-            if (isRequestOk(this)) {
-                var dataParsed = JSON.parse(ajax.responseText);
-                var array = dataParsed.types;
-                elementos = choseElements(obj, array);
+            elementos = choseElements(obj, response);
 
-                placeInformationIntoHtml(elementos);
-            }
-        }
+            placeInformationIntoHtml(elementos);
+        });
+
+
     }
 
     function placeInformationIntoHtml(args) {
