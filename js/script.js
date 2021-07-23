@@ -1,6 +1,6 @@
 (function (DOM, doc) {
     "use strict";
-    
+
     var $gameButton = new DOM('[data-js="buttons"]');
     var $betName = new DOM('[data-js="betName"]');
     var $betInformation = new DOM('[data-js="betInformation"]');
@@ -73,7 +73,7 @@
     function handleAddCart() {
         try {
             if (!verfifyChosenNumbers()) {
-                throw new Error('Números não escolhidos');
+                throw new Error('Você ainda nãp escolheu todos os números');
             }
 
             cart.push({
@@ -92,9 +92,10 @@
 
     }
 
+
     function verfifyChosenNumbers() {
 
-        return chosingNumbers.length > 0 ? true : false;
+        return chosingNumbers.length === elementos.maxNumber ? true : false;
     }
 
     function addElementsIntoCartSection(cartElement) {
@@ -137,6 +138,12 @@
 
         principalDiv.appendChild(div);
         $cartContent.appendChild(principalDiv);
+        $cartContent.setAttribute('class','cartContent');
+        var empityCartText = new DOM('[data-js="empityCart"]');
+        if(empityCartText.get()[0]){
+            $cart.get()[0].removeChild(empityCartText.get()[0]);
+        }
+      
         $cart.get()[0].insertBefore($cartContent, $priceElement.get()[0]);
 
         var formaredPrice = formatPriceToDisplay(totalPrice);
@@ -187,14 +194,15 @@
                 throw new Error('Nenhum jogo selecionado');
             }
 
-            handleClearSelectedNumbers();
+            // handleClearSelectedNumbers();
 
-            chosingNumbers = fillNumbersIntoHtml(elementos.maxNumber, elementos.range);
+            chosingNumbers = fillNumbers( elementos.maxNumber, elementos.range);
 
             Array.prototype.forEach.call($gameNumbers.get()[0].children, function (element) {
                 for (var i = 0; i < chosingNumbers.length; i++) {
                     if (chosingNumbers[i] === +element.textContent) {
-                        element.style.backgroundColor = 'red';
+                        
+                        element.style.backgroundColor = 'grey';
                     }
                 }
             });
@@ -203,6 +211,17 @@
         }
     }
 
+    function fillNumbers(maxNumber, range){
+        var arr = chosingNumbers;
+        console.log('teste', arr);
+        while(arr.length < maxNumber){
+            var aleatorio = Math.floor(Math.random() * range) + 1;
+            if(arr.indexOf(aleatorio) ===-1){
+                arr.push(aleatorio);
+            }
+        }
+        return arr;
+    }
 
     function handleClearSelectedNumbers() {
         var numbersQuantty = chosingNumbers.length;
@@ -293,13 +312,40 @@
         cleanDiv($gameNumbers.get()[0]);
 
         numeros.sort(comparaNumeros).forEach(function (number) {
+
             var span = doc.createElement('span');
             var spText = doc.createTextNode(number);
             span.appendChild(spText);
             span.setAttribute('class', 'numbers');
             span.style.backgroundColor = args.color;
             span.style.color = '#FFFFFF';
+            span.addEventListener('click', handleChoseNumber);
             $gameNumbers.get()[0].appendChild(span);
+        })
+    }
+
+    function handleChoseNumber() {
+        console.log(chosingNumbers.length, elementos.maxNumber);
+        console.log(elementos);
+        
+        if (chosingNumbers.length < elementos.maxNumber) {
+            chosingNumbers.push(this.textContent);
+            this.style.backgroundColor  ='grey';
+            addElement.apply(this, chosingNumbers);
+        }
+        else {
+            alert('Você já selecionou todos os números');
+        }
+    }
+
+    function addElement(){
+        var value = this.textContent;
+        console.log('this', this.textContent);
+        console.log('array', arguments);
+        Array.prototype.forEach.call(arguments, function(number){
+            if(value === number){
+                console.log('já tenho esse');
+            }
         })
     }
 
