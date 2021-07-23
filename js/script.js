@@ -77,7 +77,7 @@
             }
 
             cart.push({
-                numbers: chosingNumbers.sort(comparaNumeros).toString(),
+                numbers: sortNumber(chosingNumbers).toString(),
                 type: elementos.type,
                 color: elementos.color,
                 price: elementos.price
@@ -187,16 +187,24 @@
         var priceFormated = price.toFixed(2);
         return priceFormated.toString().replace('.', ',');
     }
-
+    function sortNumber(arr){
+        var sortedArray = [];
+        arr.forEach(function (element) {
+            sortedArray.push(parseInt(element));
+        });
+        
+        return  sortedArray.sort(comparaNumeros);
+        // console.log('sorted', teste.sort(comparaNumeros));
+    }
     function handleCompletNumbers() {
         try {
             if (!verifyDivContent()) {
                 throw new Error('Nenhum jogo selecionado');
             }
 
-            // handleClearSelectedNumbers();
-
+            
             chosingNumbers = fillNumbers(elementos.maxNumber, elementos.range);
+           
 
             Array.prototype.forEach.call($gameNumbers.get()[0].children, function (element) {
                 for (var i = 0; i < chosingNumbers.length; i++) {
