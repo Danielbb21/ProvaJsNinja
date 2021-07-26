@@ -282,6 +282,7 @@ span.numbers {
     font-size: 2.4rem;
     margin-top: 2.5rem;
     text-align: center;
+    color: #868686;
 }
 
 .saveCart{
@@ -300,14 +301,14 @@ span.numbers {
     font-style: italic;
 }
 
-.cart::-webkit-scrollbar-track {
+.cartContent::-webkit-scrollbar-track {
     background-color: #F4F4F4;
 }
-.cart::-webkit-scrollbar {
+.cartContent::-webkit-scrollbar {
     width: .6rem;
     background: #F4F4F4;
 }
-.cart::-webkit-scrollbar-thumb {
+.cartContent::-webkit-scrollbar-thumb {
     background: #dad7d7;
 }
 

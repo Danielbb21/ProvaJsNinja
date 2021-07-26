@@ -212,7 +212,7 @@
                 for (var i = 0; i < chosingNumbers.length; i++) {
                     if (chosingNumbers[i] === element.textContent) {
 
-                        element.style.backgroundColor = 'grey';
+                        element.style.backgroundColor = '#00FFFF';
                     }
                 }
             });
@@ -226,8 +226,6 @@
     function fillNumbers(maxNumber, range) {
         var arr = chosingNumbers;
         while (arr.length < maxNumber) {
-
-
             var aleatorio = Math.floor(Math.random() * range) + 1;
             console.log('elemento', aleatorio);
             console.log('resultado', arr.indexOf(aleatorio.toString()))
@@ -239,7 +237,6 @@
         return arr;
 
     }
-
 
 
     function handleClearSelectedNumbers() {
@@ -322,7 +319,6 @@
             placeInformationIntoHtml(elementos);
         });
 
-
     }
 
     function placeInformationIntoHtml(args) {
@@ -366,7 +362,7 @@
 
             chosingNumbers.push(this.textContent);
             console.log('chosing', chosingNumbers)
-            this.style.backgroundColor = 'grey';
+            this.style.backgroundColor = '#00FFFF';
         }
         else {
             alert('você já possui esse número');
